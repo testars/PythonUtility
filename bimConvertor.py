@@ -1,5 +1,10 @@
 import json
 import io
+
+# Open and parse the Bim file
+file = <Bim FIle Path>
+datasourceName = <Give your datasource Name which will be used in the Let - in expression>
+
 # create 'let_statement'
 def generate_let_statement(datasourceName, tableName, source_value):
     tableName = tableName.replace(" ", "")
@@ -24,10 +29,6 @@ def remove_key_recursive(obj, key):
     elif isinstance(obj, list):
         for item in obj:
             remove_key_recursive(item, key)
-
-# Open and parse the Bim file
-file = <Bim FIle Path>
-datasourceName = <Give your datasource Name which will be used in the Let - in expression>
 
 with io.open(file, mode='r', encoding='utf-8', errors='replace') as json_file:
     data = json.load(json_file)
